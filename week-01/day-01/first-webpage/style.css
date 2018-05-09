@@ -1,0 +1,41 @@
+/* body style */
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+
+body{
+    font-family: 'Oswald', sans-serif;
+}
+
+img {
+    width: 100%;
+}
+
+article {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1,
+h2{
+    text-align: center
+}
+
+h1{
+    color: #ed5a40;
+    font-size: 40px;
+    margin-top: 20px;
+}
+
+h2{
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+p{
+    font-size: 18px;
+    color: #020202;
+    margin-bottom: 10px;
+}

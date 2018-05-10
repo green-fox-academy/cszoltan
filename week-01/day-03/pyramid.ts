@@ -1,25 +1,25 @@
 'use strict';
+export {};
 
 let line: number = 4;
 
-let str: string = '';
+let out34: string = '';
     for (let i = 1; i<=line; i++){
-        for (let k = 1; k <= line - i; k++){
-            str += " ";
+        out34 = "";
+        for (let j = 1; j <= line*2-1; j++) {
+            if (j <= line - i || j > (line*2-1)-(line-i)) {
+                out34 += " ";
+            } else {
+                out34 += "*";
+            }
         }
-        for (let j = 1; j <= i; j++){
-            str += "* ";
-        }
-        console.log(str);
-        str = "";
+    //console.log ((line*2-1)-(line-i));
+    console.log(out34);
     }
 
-// Write a program that draws a
-// pyramid like this:
-//
-//    *
-//   ***
-//  *****
+// ---*---
+// --***--
+// -*****-
 // *******
 //
 // The pyramid should have as many lines as lineCount is

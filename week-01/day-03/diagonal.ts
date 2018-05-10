@@ -1,25 +1,19 @@
+export {};
 'use strict';
-export{};
-let line: number = 6;
+
+let line: number = 30;
 let out: string = "";
-// Write a program that draws a square like this:
+// Write a program that draws a
+// square like this:
 //
 // %%%%%
-// %   %
-// %   %
-// %   %
+// %%  %
+// % % %
+// %  %%
 // %   %
 // %%%%%
 //
 // The square should have as many lines as lineCount is
-
-/*for (let i = 1; i <= line2; i++) {
-    if (i === 1 || i === line2) {
-        console.log("%%%%%");
-    }else {
-        console.log("%   %");
-    }
-}*/
 
 for (let i = 1; i <= line; i++) {
     out = "";
@@ -29,7 +23,7 @@ for (let i = 1; i <= line; i++) {
         }   
     } else {
         for (let j = 1; j <= line; j++) {
-            if (j === 1 || j === line) {
+            if (j === 1 || j === line || j === i) {
                 out += "%";
             } else {
                 out += " ";

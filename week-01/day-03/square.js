@@ -1,7 +1,7 @@
 'use strict';
-export{};
-let line: number = 6;
-let out: string = "";
+exports.__esModule = true;
+var line = 6;
+var out = "";
 // Write a program that draws a square like this:
 //
 // %%%%%
@@ -12,7 +12,6 @@ let out: string = "";
 // %%%%%
 //
 // The square should have as many lines as lineCount is
-
 /*for (let i = 1; i <= line2; i++) {
     if (i === 1 || i === line2) {
         console.log("%%%%%");
@@ -20,21 +19,22 @@ let out: string = "";
         console.log("%   %");
     }
 }*/
-
-for (let i = 1; i <= line; i++) {
+for (var i = 1; i <= line; i++) {
     out = "";
     if (i === 1 || i === line) {
-        for (let j = 1; j <= line; j++) {
+        for (var j = 1; j <= line; j++) {
             out += "%";
-        }   
-    } else {
-        for (let j = 1; j <= line; j++) {
+        }
+    }
+    else {
+        for (var j = 1; j <= line; j++) {
             if (j === 1 || j === line) {
                 out += "%";
-            } else {
+            }
+            else {
                 out += " ";
             }
         }
     }
-    console.log(out);        
+    console.log(out);
 }

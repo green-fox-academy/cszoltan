@@ -1,0 +1,16 @@
+'use strict';
+var favouriteNumber = 6;
+console.log('My favourite number is: ' + favouriteNumber);
+var a = 123;
+var b = 526;
+var c;
+c = a;
+a = b;
+b = c;
+console.log(a);
+console.log(b);
+var massInKg = 81.2;
+var heightInM = 1.78;
+var bmi;
+bmi = massInKg / (heightInM * heightInM);
+console.log(bmi);

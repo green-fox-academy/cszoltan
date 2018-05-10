@@ -15,7 +15,7 @@ let out: string = "";
 //
 // The square should have as many lines as lineCount is
 
-for (let i = 1; i <= line; i++) {
+/*for (let i = 1; i <= line; i++) {
     out = "";
     if (i === 1 || i === line) {
         for (let j = 1; j <= line; j++) {
@@ -30,5 +30,17 @@ for (let i = 1; i <= line; i++) {
             }
         }
     }
+    console.log(out);        
+}*/
+
+for (let i = 1; i <= line; i++) {
+    out = "";
+        for (let j = 1; j <= line; j++) {
+            if (j === 1 || j === line || j === i || i=== 1 || i === line) {
+                out += "%";
+            } else {
+                out += " ";
+            }
+        }
     console.log(out);        
 }

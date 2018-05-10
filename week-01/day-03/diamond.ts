@@ -1,39 +1,33 @@
 'use strict';
 export {};
 
-let line: number = 7;
+let line: number = 8;
 
 let out: string = "";
-let half: number = line / 2;
-
-for (let i = 1; i <= half; i++) {
+let k = 1;
+let middle: boolean = false;
+for (let i = 1; i <= line; i++) {    
     out = "";
-    for (let j = 1; j <= line; j++) {
-        if (j <= half - i || j > (half*2-1)-(half-i)) {
-            out += "-";
-        } else {
-            out += "*";
-        }
+    for (let j = 1; j <= Math.abs(Math.ceil(line / 2) - i); j++) {
+        out += " ";
+    }
+    for (let m = 1; m <= k; m++) {
+        out += "*";
+    }
+    if ((k < line && k < line -1 ) && !middle) {
+        k += 2;
+    } else {
+        middle = true;
+    }
+    if (middle) {
+        k -= 2;
     }
     console.log(out);
+    if (i === Math.ceil(line / 2) && line % 2 === 0) {
+        console.log(out);
+    }
 }
 
-/*let out34: string = '';
-    for (let i = 1; i<=line; i++){
-        out34 = "";
-        if (i < line / 2 ) {
-            for (let j = 1; j <= line; j++) {
-                if (j <= line / 2 - i || j > (line - 1)-(line-i)) {
-                    out34 += " ";
-                } else {
-                    out34 += "*";
-                }
-            }
-        console.log(out34);
-        }
-    console.log(out34);
-
-    }
     /*
 
 ---*---
@@ -43,8 +37,6 @@ for (let i = 1; i <= half; i++) {
 -*****-
 --***--
 ---*---
-
-
 
 
 

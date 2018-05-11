@@ -2,12 +2,13 @@
 export {};
 
 let line: number = 5;
-
 let out34: string = '';
+let k: number = 1;
+
 for (let i = 1; i<=line; i++){
     out34 = "";
-    for (let j = 1; j <= line*2-1; j++) {
-        if (j <= line - i || j > (line*2-1)-(line-i)) {
+    for (let j = 1; j <= line - i + k; j++) {
+        if (j <= line - i) {
             out34 += " ";
         } else {
             out34 += "*";
@@ -15,6 +16,7 @@ for (let i = 1; i<=line; i++){
     }
 //console.log ((line*2-1)-(line-i));
 console.log(out34);
+k += 2;
 }
 
 // ---*---

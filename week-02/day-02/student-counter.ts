@@ -20,7 +20,18 @@ function candyCount (input: any[]): number {
   return out;
 }
 
+function ageFewCandy (input: any[]): number {
+  let out: number = 0;
+  input.forEach(function (value) {
+    if (value.candies < 5) {
+      out += value.age;
+    }
+  });
+  return out;
+}
+
 console.log(candyCount(students));
+console.log(ageFewCandy(students));
 
 // create a function that takes a list of students and logs: 
 // - how many candies are owned by students

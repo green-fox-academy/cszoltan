@@ -19,7 +19,7 @@ function countLines(input: string): number {
         count++;
       }
     }
-    return count;
+    return ++count;
   }
   catch (e) {
     return 0;

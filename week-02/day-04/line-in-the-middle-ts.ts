@@ -1,5 +1,5 @@
 'use strict';
-export {};
+//export {};
 const canvas = document.querySelector('.main-canvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d');
 

@@ -23,6 +23,6 @@ function squareDraw(size: number, color: string) {
   ctx.strokeRect(middleW - size, middleH - size, size * 2, size *2);
 }
 
-for (let i: number = 1; i < 360; i++) {
-  squareDraw(i, `hsl(${i}, 100%, 50%)`);
+for (let i: number = 1; i < 600; i++) {
+  squareDraw(i, `hsl(${i % 360}, 100%, 50%)`);
 }

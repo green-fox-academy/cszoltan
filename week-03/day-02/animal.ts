@@ -30,3 +30,5 @@ class Animal {
     ++this.thirst;
   }
 }
+
+export{Animal};

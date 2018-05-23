@@ -22,3 +22,5 @@ class Sharpie {
     --this.inkAmount;
   }
 }
+
+export{Sharpie};

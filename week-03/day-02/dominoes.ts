@@ -31,7 +31,7 @@ for (let i: number = 0; i < dominoes.length - 1; i++) {
         dominoes[j] = dominoes[i + 1];
         dominoes[i + 1] = swap;
     }
-}
+  }
 }
 
 print(dominoes);

@@ -25,8 +25,8 @@ let dominoes = initializeDominoes();
 //let temp = [];
 
 for (let i: number = 0; i < dominoes.length - 1; i++) {
-  for(let j = 1; j < dominoes.length; j++) {
-    if(dominoes[i].values[1] === dominoes[j].values[0]) {
+  for(let j = i + 1; j < dominoes.length; j++) {
+    if(dominoes[i].values[1] === dominoes[j].values[0] && i != j - 1) {
         let swap = dominoes[j];
         dominoes[j] = dominoes[i + 1];
         dominoes[i + 1] = swap;

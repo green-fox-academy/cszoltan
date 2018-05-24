@@ -39,21 +39,19 @@ class DiceSet {
 let diceSet = new DiceSet();
 
 diceSet.roll();
-let isSix: boolean = true;
 
-diceSet.dices.forEach(value => {
-  if (value != 6) {
-    isSix = false;
-  }
-});
+let isSix: boolean = false;
+let ind: number;
 
 while (!isSix) {
-  diceSet.reroll();
+  ind = 0;
   isSix = true;
   diceSet.dices.forEach(value => {
     if (value != 6) {
       isSix = false;
+      diceSet.reroll(ind);
     }
+    ind++;
   });
   diceSet.getCurrent();
   console.log("------------------");

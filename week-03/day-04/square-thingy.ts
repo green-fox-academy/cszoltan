@@ -28,7 +28,7 @@ function fractal (x: number, y: number, length: number): number {
       for (let j: number = y; j < y + length - 1; j += Math.round(length / 3)) {
         if (ind === jnd && ind % 2 === 0) {
           ctx.beginPath();
-          ctx.fillStyle = `hsl(${((i + j) / 18) % 360 + 180}, 100%, 50%)`;
+          ctx.fillStyle = `hsl(${((i + j) / 36) % 360 + 180}, 100%, 50%)`;
           ctx.fillRect(i, j, Math.round(length / 3), Math.round(length / 3));
         }
         setTimeout(function(){ 

@@ -1,10 +1,7 @@
 'use strict';
-//import {Circle} from "./circle";
-
 
 const canvas = document.querySelector('.main-canvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d');
-
 
 canvas.width = canvas.scrollWidth;
 canvas.height = canvas.scrollHeight;
@@ -15,7 +12,7 @@ class Square {
     ctx.strokeRect(x, y, l, l);
   }
 }
-
+let start: number = Math.random() * 360;
 let rect: Square = new Square();
 
 function fractal (x: number, y: number, length: number): number {
@@ -28,7 +25,7 @@ function fractal (x: number, y: number, length: number): number {
       for (let j: number = y; j < y + length - 1; j += Math.round(length / 3)) {
         if (ind === jnd && ind % 2 === 0) {
           ctx.beginPath();
-          ctx.fillStyle = `hsl(${((i + j) / 36) % 360 + 180}, 100%, 50%)`;
+          ctx.fillStyle = `hsl(${((i + j) / 36) % 100 + start}, 100%, 50%)`;
           ctx.fillRect(i, j, Math.round(length / 3), Math.round(length / 3));
         }
         setTimeout(function(){ 
@@ -38,7 +35,7 @@ function fractal (x: number, y: number, length: number): number {
       }
       ind++;
     }
-    return /*drawBoxes(Math.round(length / 3), x + Math.round(length / 3), y + Math.round(length / 3))*/ 1;
+    return 1;
   }
 }
 

@@ -1,5 +1,6 @@
 import {Tree} from "./tree";
 import {Flower} from "./flower";
+import {Plant} from "./plant";
 
 class Garden {
   flowers: Flower[] = [];

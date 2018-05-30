@@ -1,6 +1,7 @@
 import {Comparable} from "./comparable";
+import {Printable} from "./printable";
 
-class Domino implements Comparable{
+class Domino implements Comparable,  Printable{
   values: number[];
   constructor(valueA: number, valueB: number) {
       this.values = [valueA, valueB];
@@ -14,6 +15,10 @@ class Domino implements Comparable{
     } else {
       return -1;
     }
+  }
+
+  printAllFields(): void {
+    console.log(`[${this.values[0]}|${this.values[1]}]`);
   }
 }
 
@@ -29,6 +34,9 @@ dominoes.sort(function (a: Domino , b: Domino): number {
   return a.compareTo(b);
 });
 
-console.log(dominoes);
+//console.log(dominoes);
+for (let domino of dominoes) {
+  domino.printAllFields();
+}
 
 export {Domino};

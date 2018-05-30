@@ -18,4 +18,4 @@ fleet.complete(3);
 
 fleet.sort();
 
-fleet.print();
+//fleet.print();

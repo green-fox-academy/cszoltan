@@ -10,7 +10,7 @@ class Fleet {
     complete(id: number) {
       this.things[id].complete();
     }
-    print () {
+    /*print () {
       this.things.forEach(value => {
         let temp: string = '[';
         if (value.getStatus()) {
@@ -21,7 +21,7 @@ class Fleet {
         temp += `] ${value.getName()}`;
         console.log(temp);
       });
-    }
+    }*/
     sort () {
       this.things.sort(function (a: Thing, b: Thing): number {
         return a.compareTo(b);

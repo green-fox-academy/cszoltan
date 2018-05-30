@@ -1,6 +1,7 @@
 import {Comparable} from "./comparable";
+import {Printable} from "./printable";
 
-class Thing implements Comparable{
+class Thing implements Comparable, Printable{
   private name: string;
   private completed: boolean;
 
@@ -27,6 +28,16 @@ class Thing implements Comparable{
     } else {
       return -1;
     }
+  }
+  printAllFields():void {
+    let temp: string = '[';
+    if (this.completed) {
+      temp += 'X';
+    } else {
+      temp += ' ';
+    }
+    temp += `] ${this.name}`;
+    console.log(temp);
   }
 }
 

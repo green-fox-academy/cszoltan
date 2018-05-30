@@ -19,11 +19,12 @@ class Reservation implements Reservationy {
   getCodeBooking(): string {
     let output: string = '';
     for (let i: number = 0; i < 8; i++) {
-      if ((Math.random() * 36) < 10) {
-        output += `${Math.floor(Math.random() * 10)}`;
-      } else {
-        output += String.fromCharCode(Math.floor(Math.random() * 26 + 65));
+      let ascii: number = Math.floor(Math.random() * 43 + 48);
+      do {
+        ascii = Math.floor(Math.random() * 43 + 48);
       }
+      while (ascii > 57 && ascii < 65)
+      output += String.fromCharCode(ascii);
     }
     return output;
   }

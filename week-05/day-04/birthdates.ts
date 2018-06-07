@@ -21,12 +21,10 @@ function busyYear(file: string): string {
     return value.slice(value.indexOf(';') + 1, value.indexOf(';') + 5);
   });
   let yearCounts: Object = countBirthPerYear(data);
-  let max: number = 0;
-  let output: string = '';
   let properties = Object.getOwnPropertyNames(yearCounts);
+  let output: string = properties[0];
   properties.forEach(value => {
-    if (yearCounts[value] > max) {
-      max = yearCounts[value];
+    if (yearCounts[value] > yearCounts[output]) {
       output = value;
     }
   });

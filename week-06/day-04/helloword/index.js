@@ -1,6 +1,11 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
+const todos = [
+  'get up',
+  'survive',
+  'go back to bed',
+];
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -8,13 +13,10 @@ app.set('view engine', 'ejs');
 // home page
 app.get('/', (req, res) => {
   // render `home.ejs`
-  let greet = 'Welcome back, Guest!';
-  if (req.query.name) {
-    greet = `Welcome back, ${req.query.name}!`;
-  }
+  
   res.render('home', {
     title: 'Hello',
-    greeter: greet
+    list: todos,
   });
 });
 

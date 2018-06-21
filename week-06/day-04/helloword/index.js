@@ -8,9 +8,13 @@ app.set('view engine', 'ejs');
 // home page
 app.get('/', (req, res) => {
   // render `home.ejs`
+  let greet = 'Welcome back, Guest!';
+  if (req.query.name) {
+    greet = `Welcome back, ${req.query.name}!`;
+  }
   res.render('home', {
-    title: 'Hello World',
-    h1: 'asd'
+    title: 'Hello',
+    greeter: greet
   });
 });
 

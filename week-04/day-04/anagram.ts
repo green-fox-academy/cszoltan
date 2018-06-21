@@ -14,28 +14,32 @@ function countLetters(input: string): Object {
 }
 
 function anagram(stringA: string, stringB: string): boolean {
-  let objA = countLetters(stringA);
-  let objB = countLetters(stringB)
-  let aProps = Object.getOwnPropertyNames(objA);
-  let bProps = Object.getOwnPropertyNames(objB);
+  let aObj = countLetters(stringA);
+  let bObj = countLetters(stringB)
+  let aProps = Object.getOwnPropertyNames(aObj);
+  let bProps = Object.getOwnPropertyNames(bObj);
   if (aProps.length != bProps.length) {
     return false;
   }
   for (let i = 0; i < aProps.length; i++) {
     if (bProps.indexOf(aProps[i]) > -1) {
-      if (objA[aProps[i]] === objB[bProps[bProps.indexOf(aProps[i])]]) {
-        return true;
-      } else {
+      if(aObj[aProps[i]]!==bObj[bProps[bProps.indexOf(aProps[i])]]) {
         return false;
       }
     } else {
       return false;
     }
   }
+  return true;
 }
 
 test('testing count letters on 1', t => {
   t.deepEqual(countLetters('a'), { a: 1 });
+  t.end();
+});
+
+test('testing count letters on 3', t => {
+  t.deepEqual(countLetters('acc'), { a: 1, c: 2 });
   t.end();
 });
 

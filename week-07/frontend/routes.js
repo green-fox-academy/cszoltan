@@ -45,4 +45,30 @@ app.get('/appenda/:appendable', (req, res) => {
   });
 });
 
+app.post('/dountil/:what', (req, res) => {
+  if (req.body.until) {
+    if (req.params.what === 'sum') {
+      let output = 1;
+      for (let i = 2; i <= parseInt(req.body.until); i++) {
+        output += i;
+      }
+      res.json({
+        result: output,
+      });
+    } else {
+      let output = 1;
+      for (let i = 2; i <= parseInt(req.body.until); i++) {
+        output *= i;
+      }
+      res.json({
+        result: output,
+      });
+    }
+  } else {
+    res.json({
+      error: 'Please provide a number!',
+    })
+  }
+});
+
 module.exports = app;

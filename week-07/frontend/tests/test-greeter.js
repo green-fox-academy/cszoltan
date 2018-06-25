@@ -15,7 +15,7 @@ test('greeter?name endpoint', (t) => {
     });
 });
 
-test('doubling?name&title endpoint', (t) => {
+test('greeter?name&title endpoint', (t) => {
   request(app)
     .get('/greeter?name=Jason&title=idc')
     .expect('Content-Type', /json/)

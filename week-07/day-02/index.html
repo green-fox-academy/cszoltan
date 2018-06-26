@@ -65,16 +65,28 @@
       if (prime) {
         div.classList.add('prime');
       } else {
-        div.classList.remove('not-prime');
+        div.classList.add('not-prime');
       }
     }
     // 3: Create a timer that keeps calling the prime validatior function until it reaches the end of elements
     //  - the timer should fire every 100ms
     //  - the timer should stop when there are no more elements left to be colored
     let divs = document.querySelectorAll('div');
-    for (let i = 0; i < divs.length; i++) {
-      setTimeout(() => primeValidator(divs[i]), (i + 1) * 100);
+    /*for (let i = 0; i < divs.length; i++) {
+     setTimeout(() => primeValidator(divs[i]), (i + 1) * 100);
+   }*/
+    let iteration = 0;
+    function callBack() {
+      primeValidator(divs[iteration]);
+      iteration++;
+      if (iteration === 100) {
+        console.log('wat');
+        clearInterval(priming);
+      }
     }
+    let priming = window.setInterval(callBack, 100);
+
   </script>
 </body>
+
 </html>

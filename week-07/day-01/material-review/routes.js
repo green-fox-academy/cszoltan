@@ -2,7 +2,6 @@
 
 const express = require('express');
 const app = express();
-const PORT = 3000;
 
 const cars = [
   {id: 1, brand: 'idk', type: 'wat'},
@@ -48,6 +47,4 @@ app.delete('/api/cars', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log('App is up and running on port ' + PORT);
-});
+module.exports = app;

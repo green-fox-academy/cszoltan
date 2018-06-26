@@ -1,0 +1,14 @@
+.image-content{
+  width: 320px;
+  height: 180px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.image-content img{
+  width: 100%;
+}
+
+#search {
+  margin-bottom: 20px;
+}

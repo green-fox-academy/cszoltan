@@ -1,14 +1,17 @@
 function requestGiphy() {
   let search = document.querySelector('.searchField').value;
+  let offset = Math.floor(Math.random() * 200);
   let container = document.querySelector('.container');
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
   const httpRequest = new XMLHttpRequest();
-  httpRequest.open('GET', `https://api.giphy.com/v1/gifs/search?api_key=IkcPjpJcZnx6Z86E1YMoEiSNIca7U9FP&q=${search}&limit=16&offset=0&rating=R&lang=en`, true);
+  httpRequest.open('GET', `https://api.giphy.com/v1/gifs/search?api_key=IkcPjpJcZnx6Z86E1YMoEiSNIca7U9FP&q=${search}&limit=15&offset=${offset}&rating=R&lang=en`, true);
   httpRequest.onload = () => {
     let giphyResponse = JSON.parse(httpRequest.responseText);
     giphyResponse.data.forEach(value => {
+      let div = document.createElement('div');
+      div.classList.add('image-content');
       let image = document.createElement('img');
       image.setAttribute('src', value.images.fixed_height_still.url);
       image.onclick = () => {
@@ -20,7 +23,8 @@ function requestGiphy() {
           image.classList.add('move');
         }
       }
-      document.querySelector('.container').appendChild(image);
+      div.appendChild(image);
+      document.querySelector('.container').appendChild(div);
     });
   }
   httpRequest.send();

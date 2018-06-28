@@ -1,6 +1,6 @@
 function requestGiphy() {
   let search = document.querySelector('.searchField').value;
-  let offset = Math.floor(Math.random() * 200);
+  let offset = Math.floor(Math.random() * 600);
   let container = document.querySelector('.container');
   while (container.firstChild) {
     container.removeChild(container.firstChild);

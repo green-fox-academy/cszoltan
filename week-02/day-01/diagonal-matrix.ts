@@ -14,8 +14,7 @@
 'use strict';
 export {};
 
-let line: number = 4;
-let column: number = 4;
+let line: number = 10;
 
 let matrix: number[][] = [];
 let temp: string = '';
@@ -23,8 +22,8 @@ let temp: string = '';
 for (let i = 0; i < line; i++) {
     temp = '';
     matrix[i] = [];
-    for (let j = 0; j < column; j++) {
-        if (column -1 - j === i) {
+    for (let j = 0; j < line; j++) {
+        if (line -1 - j === i) {
             matrix[i][j] = 1;
         } else {
             matrix[i][j] = 0;

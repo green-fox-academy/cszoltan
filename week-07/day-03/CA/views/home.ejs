@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Books</title>
+  </head>
+  <body>
+    <div>Books titles</div>
+    <ul>
+      <% books.forEach((book) => {%>
+        <li><%= book.book_name %></li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

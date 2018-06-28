@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title class="title">All books with full data</title>
+  </head>
+  <body>
+    <h1 class="title">All books with full data</h1>
+    <button data-category="Technology">Show Technology Books</button>
+    <button data-category="Science">Show Science Books</button>
+    <button data-category="*">Show All Books</button>
+    <button data-category="titles">Get Titles</button>
+    <button data-category="categories">Get Categories</button>
+    <table>
+      <thead>
+        <th id="author">AUTHOR</th>
+        <th id="title">TITLE</th>
+        <th id="category">CATEGORY</th>
+        <th id="publisher">PUBLISHER</th>
+        <th id="price">PRICE</th>
+      </thead>
+      <tbody id="books"></tbody>
+    </table>
+    <a href="/authors">Authors</a>
+    <script src="/assets/books.js"></script>
+  </body>
+</html>

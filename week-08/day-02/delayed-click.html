@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Delayed Click</title>
+  </head>
+  <body>
+    <button>Click me</button>
+
+    <script>
+      //If the user clicks the button it should wait 2 seconds and it should show a text under the button: 2 seconds ellapsed
+      let delayed = () => {
+        document.body.innerHTML += '</br>2 seconds ellapsed';
+      }
+      document.querySelector('button').addEventListener('click', () => {
+        console.log('clicked');
+        setTimeout(delayed, 2000);
+      });
+    </script>
+  </body>
+</html>

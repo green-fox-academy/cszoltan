@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Movies</title>
+</head>
+<body>
+  <form>
+    <select class="genre">
+      <option disabled selected>Select a Genre</option>
+    </select>
+    <select class="movie">
+      <option disabled selected>Select a Movie</option>
+    </select>
+  </form>
+  <div>The selected movie is: <span>-</span></div>
+  <script>
+    let genres = ['Sci-Fi', 'Comedy', 'Drama'];
+    let movies = [
+      { title: 'Moon', genre: [genres[0], genres[2]]},
+      { title: 'Darkest Hour', genre: [genres[2]]},
+      { title: '2001 Space Odyssey', genre: [genres[0]]},
+      { title: 'Contact', genre: [genres[0], genres[2]]},
+      { title: 'There Will Be Blood', genre: [genres[2]]},
+      { title: 'American Beauty', genre: [genres[2]]},
+      { title: 'Airplane!', genre: [genres[1]]},
+      { title: 'Deadpool', genre: [genres[1]]},
+      { title: 'Wayne\'s World', genre: [genres[1]]},
+      ];
+    let genre = document.querySelector('.genre');
+    let movie = document.querySelector('.movie');
+    let display = document.querySelector('span');
+    genres.forEach(element => {
+      let option = document.createElement('option');
+      option.setAttribute('value', element);
+      option.innerHTML = element;
+      genre.appendChild(option);
+    });
+    genre.addEventListener('input', (event) => {
+      console.log(genre.value);
+      movie.innerHTML = '';
+      let option = document.createElement('option');
+      option.disabled = true;
+      option.selected = true;
+      option.innerHTML = 'Select a Movie';
+      movie.appendChild(option);
+      movies.forEach(element => {
+        if (element.genre.indexOf(genre.value) > -1) {
+          option = document.createElement('option');
+          option.value = element.title;
+          option.innerHTML = element.title;
+          movie.appendChild(option);
+        }
+      });
+    });
+    movie.addEventListener('input', () => {
+      display.innerHTML = movie.value;
+    });
+  </script>
+</body>
+</html>

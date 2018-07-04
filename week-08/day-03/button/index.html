@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <form action="">
+    <div>
+      <p>What is your favourite pet?</p>
+      <label>
+        <input type="radio" name="fav" class="fav" id="Cat" value="Cat">
+        <span>Cat</span>
+      </label>
+      <label>
+        <input type="radio" name="fav" class="fav" id="dog" value="dog" disabled>
+        <span>dog</span>
+      </label>
+      <label>
+        <input type="radio" name="fav" class="fav" id="Viktor" value="Viktor">
+        <span>Viktor the goldfish</span>
+      </label>
+    </div>
+    <div>
+      <p>Do you want to sign up for cat facts?</p>
+      <label>
+        <input type="radio" name="facts" class="facts" value="Yes">
+        <span>Yes</span>
+      </label>
+      <label>
+        <input type="radio" name="facts" class="facts" value="No">
+        <span>No</span>
+      </label>
+    </div>
+    <div>
+      <label>
+        <input type="submit" id="love" value="I love cats" disabled>
+      </label>
+      <label>
+        <input type="submit" id="up" value="Sign up" disabled>
+      </label>
+    </div>
+  </form>
+  <script>
+
+    document.querySelectorAll('.fav').forEach(radio => {
+      radio.addEventListener('input', () => {
+        document.querySelector('#up').disabled = false;
+      });
+    });
+  </script>
+</body>
+
+</html>

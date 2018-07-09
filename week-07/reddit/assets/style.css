@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  border-style: solid;
+  border-width: 1px;
+}
+.votes {
+  border-style: solid;
+  border-width: 1px;
+}
+.upvote {
+  width: 20px;
+  height: 20px;
+}
+.downvote {
+  width: 20px;
+  height: 20px;
+  transform: rotate(180deg);
+}
+.score {
+  text-align: center;
+  margin: 10px 0px;
+}
+.title {
+  padding-left: 10px;
+}
+.content {
+  padding-left: 25px;
+}
+.delete {
+  float: right;
+}
+.container:nth-child(even) {
+  background-color: lightgray;
+}

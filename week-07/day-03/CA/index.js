@@ -8,7 +8,6 @@ const app = express();
 const PORT = 3000;
 
 const conn = mysql.createConnection({
-  //socketPath: '/tmp/mysql.sock', // <-- it's balazskaxd's line
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -35,13 +34,15 @@ app.get('/authors', (req, res) => {
   res.sendFile(path.join(__dirname, 'authors.html'));
 });
 
+let array = ['asd', 'something'];
+
 app.get('/api/authors/full', (req, res) => {
 let sql = 'SELECT * FROM author;';
 let queryInputs = [];
-if (req.query.country) {
+/*if (req.query.country) {
   sql = 'SELECT * FROM author WHERE country = ?;';
   queryInputs = [req.query.country];
-}
+}*/
   conn.query(sql, queryInputs, (err, author) => {
     if (err) {
       console.log(err);

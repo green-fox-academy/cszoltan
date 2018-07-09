@@ -45,9 +45,11 @@ candyRain.addEventListener('click', () => {
 });
 
 let startCandyGenerate = () => {
-  console.log('somethibng');
   setInterval(() => {
     candies += rate;
     statCandy.innerHTML = candies;
+    if (candies >= 100) {
+      buyLolly.disabled = false;
+    }
   }, 1000);
 };

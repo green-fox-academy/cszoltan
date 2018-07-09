@@ -17,8 +17,9 @@ app.get('/signup', (req, res) => {
 app.post('/signup', (req, res) => {
   let myObj = {username: req.body.username, email: req.body.email};
   signups.push(myObj);
+  let messageString = `Thanks ${myObj.username}, we will send updates to ${myObj.email}!`;
   res.json({
-    message: `Thanks ${myObj.username}, we will send updates to ${myObj.email}!`,
+    message: messageString,
   });
 });
 

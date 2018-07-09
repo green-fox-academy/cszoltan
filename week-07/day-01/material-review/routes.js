@@ -30,7 +30,7 @@ app.post('/api/cars', (req, res) => {
     type: req.body.type
   });
   res.json({
-    message: 'fuck off',
+    message: 'got it',
   });
 });
 

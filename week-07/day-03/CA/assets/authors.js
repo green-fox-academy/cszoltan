@@ -1,7 +1,19 @@
 const http = new XMLHttpRequest();
 const host = 'http://localhost:3000';
 
-function createRows(data) {
+getData(`/api/authors/full`, createRows);
+
+function getData(apiRoute, callback) {//apiRoute = '/api/authors/full', callback = createRows
+  http.open('GET', `${host}${apiRoute}`, true);
+  http.onload = () => {
+    const result = JSON.parse(http.responseText);
+    console.log(result.author);
+    callback(result.author);//createRows(result.author);
+  };
+  http.send();
+}
+
+function createRows(data) {//data = result.author
   const tbody = document.querySelector('#authors');
   tbody.innerHTML = '';
   data.forEach((author) => {
@@ -34,15 +46,7 @@ function createRows(data) {
   });
 }
 
-function getData(apiRoute, callback) {
-  http.open('GET', `${host}${apiRoute}`, true);
-  http.onload = () => {
-    const result = JSON.parse(http.responseText);
-    callback(result.author);
-  };
 
-  http.send();
-}
 
 function consoleResponse(response) {
   console.log(response);
@@ -76,5 +80,3 @@ buttons.forEach((button) => {
   button.addEventListener('click', getCategory);
 });
 
-
-getData(`/api/authors/full`, createRows);

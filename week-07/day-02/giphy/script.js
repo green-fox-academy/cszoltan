@@ -1,12 +1,13 @@
 function requestGiphy() {
-  let search = document.querySelector('.searchField').value;
+  let search = document.querySelector('.searchText').value;
+  let limit = document.querySelector('.searchNumber').value;
   let offset = Math.floor(Math.random() * 600);
   let container = document.querySelector('.container');
-  while (container.firstChild) {
+  while (container.firstChild !== undefined) {
     container.removeChild(container.firstChild);
   }
   const httpRequest = new XMLHttpRequest();
-  httpRequest.open('GET', `https://api.giphy.com/v1/gifs/search?api_key=IkcPjpJcZnx6Z86E1YMoEiSNIca7U9FP&q=${search}&limit=15&offset=${offset}&rating=R&lang=en`, true);
+  httpRequest.open('GET', `https://api.giphy.com/v1/gifs/search?api_key=IkcPjpJcZnx6Z86E1YMoEiSNIca7U9FP&q=${search}&limit=${limit}&offset=${offset}&rating=R&lang=en`, true);
   httpRequest.onload = () => {
     let giphyResponse = JSON.parse(httpRequest.responseText);
     giphyResponse.data.forEach(value => {
@@ -29,5 +30,8 @@ function requestGiphy() {
   }
   httpRequest.send();
 }
+
+document.querySelector('.searchText').value = 'search parameter';
+document.querySelector('.searchNumber').value = 'search limit';
 
 document.querySelector('.execute').onclick = () => requestGiphy();

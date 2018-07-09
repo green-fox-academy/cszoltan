@@ -13,5 +13,5 @@ form.addEventListener('submit', (event) => {
     console.log(response);
     let container = document.querySelector('.response');
     container.innerHTML = response.message;
-  }
+  };
 });

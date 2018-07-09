@@ -1,12 +1,6 @@
 const http = new XMLHttpRequest();
 const host = 'http://localhost:3000';
 
-let voteRequest = (result) => {
-  let container = document.querySelector(`#id-${result.id}`);
-  let scoreDiv = container.firstChild;
-  scoreDiv.innerHTML = result.score;
-};
-
 let makeRequest = (type, api, callback) => {
   http.open(type, `${host}${api}`, true);
   http.onload = () => {
@@ -14,35 +8,90 @@ let makeRequest = (type, api, callback) => {
     callback(result);
   }
   http.send();
+};
+
+let voteRequest = (result) => {
+  let container = document.querySelector(`#id-${result.id}`);
+  let page = document.querySelector('.page');
+  container.querySelector('.votes').querySelector('.score').innerHTML = result.score;
+  if (checkSiblings(container)) {
+    page.innerHTML = '';
+    makeRequest('get', '/api/posts', renderPage);
+  } 
+};
+
+let checkSiblings = (element) => {
+  let elementScore = parseInt(element.querySelector('.votes').querySelector('.score').innerHTML);
+  if (element.previousSibling) {
+    let aboveScore = parseInt(element.previousSibling.querySelector('.votes').querySelector('.score').innerHTML);
+    if (aboveScore < elementScore) {
+      return true;
+    }
+  }
+  if (element.nextSibling) {
+    let belowScore = parseInt(element.nextSibling.querySelector('.votes').querySelector('.score').innerHTML);
+    if (belowScore > elementScore) {
+      return true;
+    }
+  }
+  return false;
 }
 
+let sortPosts = (data) => {
+  let myArray = data.post;
+  for (let i = 0; i < myArray.length - 1; i++) {
+    for (let j = i + 1; j < myArray.length; j++) {
+      if (myArray[i].score < myArray[j].score) {
+        let temp = myArray[j];
+        myArray[j] = myArray[i];
+        myArray[i] = temp;
+      }
+    }
+  }
+  return myArray;
+};
+
+let deletePost = (result) => {
+  document.querySelector('.page').innerHTML = '';
+  makeRequest('get', '/api/posts', renderPage);
+};
+
 let renderPage = (result) => {
-  result.post.forEach(post => {
+  let posts = sortPosts(result);
+  posts.forEach(post => {
+    let page = document.querySelector('.page');
     let container = document.createElement('div');
-    let scoreDiv = document.createElement('div');
-    scoreDiv.innerHTML = post.score;
-    container.appendChild(scoreDiv);
     container.classList.add('container');
     container.setAttribute('id', `id-${post.id}`);
-    let buttonDiv = document.createElement('div');
-    let downVote = document.createElement('button');
-    downVote.innerHTML = 'Downvote';
-    downVote.addEventListener('click', () => {
-      makeRequest('PUT', `/api/posts/${post.id}/downvote`, voteRequest);
-    });
-    buttonDiv.appendChild(downVote);
-    let upVote = document.createElement('button');
-    upVote.innerHTML = 'Upvote';
+    let voteDiv = document.createElement('div');
+    voteDiv.classList.add('votes');
+    let upVote = document.createElement('img');
+    upVote.setAttribute('src', 'assets/img/up.png');
+    upVote.classList.add('upvote');
     upVote.addEventListener('click', () => {
       makeRequest('PUT', `/api/posts/${post.id}/upvote`, voteRequest);
     });
-    buttonDiv.appendChild(upVote);
-    container.appendChild(buttonDiv);
+    voteDiv.appendChild(upVote);
+    let scoreDiv = document.createElement('div');
+    scoreDiv.classList.add('score');
+    scoreDiv.innerHTML = post.score;
+    voteDiv.appendChild(scoreDiv);
+    let downVote = document.createElement('img');
+    downVote.setAttribute('src', 'assets/img/up.png');
+    downVote.classList.add('downvote');
+    downVote.addEventListener('click', () => {
+      makeRequest('PUT', `/api/posts/${post.id}/downvote`, voteRequest);
+    });
+    voteDiv.appendChild(downVote);
+    container.appendChild(voteDiv);
     let postDiv = document.createElement('div');
+    postDiv.classList.add('post');
     let titleDiv = document.createElement('div');
-    titleDiv.innerHTML = `${post.title}`;
+    titleDiv.classList.add('title');
+    titleDiv.innerHTML = `<h3>${post.title}</h3>`;
     postDiv.appendChild(titleDiv);
     let contentDiv = document.createElement('div');
+    contentDiv.classList.add('content');
     let stringEnd = post.content.indexOf(' ', 30);
     if (stringEnd === -1) {
       stringEnd = post.content.length;
@@ -50,8 +99,14 @@ let renderPage = (result) => {
     contentDiv.innerHTML = `${post.content.slice(0, stringEnd)} ${post.content.length > stringEnd ? '...' : ''}`;
     postDiv.appendChild(contentDiv);
     container.appendChild(postDiv);
-    document.body.appendChild(container);
+    /*let deleteDiv = document.createElement('div');
+    deleteDiv.classList.add('delete');
+    deleteDiv.innerHTML = 'DELETE';
+    deleteDiv.addEventListener('click', () => {
+      makeRequest('delete', `/api/posts/${post.id}`, deletePost);
+    });
+    container.appendChild(deleteDiv);*/
+    page.appendChild(container);
   });
 }
-
 makeRequest('GET', '/api/posts', renderPage);

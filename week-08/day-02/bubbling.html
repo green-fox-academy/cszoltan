@@ -56,33 +56,32 @@
         let horizontal = 0;
         let img = document.querySelector('.img-inspector');
         let affect = (event) => {
-          if (event.path[0].dataset.action === 'zoom') {
-            if (event.path[0].dataset.direction === 'out') {
-              size -= 20;
+          console.log(event);
+          switch (event.path[0].dataset.direction) {
+            case 'up':
+              vertical -= 10;
               img.setAttribute('style', `background-size: ${size}%; background-position: ${horizontal}px ${vertical}px`);
-            } else {
+              break;
+            case 'down':
+              vertical += 10;
+              img.setAttribute('style', `background-size: ${size}%; background-position: ${horizontal}px ${vertical}px`);
+              break;
+            case 'left':
+              horizontal -= 10;
+              img.setAttribute('style', `background-size: ${size}%; background-position: ${horizontal}px ${vertical}px`);
+              break;
+            case 'right':
+              horizontal += 10;
+              img.setAttribute('style', `background-size: ${size}%; background-position: ${horizontal}px ${vertical}px`);
+              break;
+            case 'in':
               size += 20;
               img.setAttribute('style', `background-size: ${size}%; background-position: ${horizontal}px ${vertical}px`);
-            }
-          } else {
-            switch (event.path[0].dataset.direction) {
-              case 'up':
-                vertical -= 10;
-                img.setAttribute('style', `background-size: ${size}%; background-position: ${horizontal}px ${vertical}px`);
-                break;
-              case 'down':
-                vertical += 10;
-                img.setAttribute('style', `background-size: ${size}%; background-position: ${horizontal}px ${vertical}px`);
-                break;
-              case 'left':
-                horizontal -= 10;
-                img.setAttribute('style', `background-size: ${size}%; background-position: ${horizontal}px ${vertical}px`);
-                break;
-              case 'right':
-                horizontal += 10;
-                img.setAttribute('style', `background-size: ${size}%; background-position: ${horizontal}px ${vertical}px`);
-                break;
-            }
+              break;
+            case 'out':
+              size -= 20;
+              img.setAttribute('style', `background-size: ${size}%; background-position: ${horizontal}px ${vertical}px`);
+              break;
           }
         }
         nav.addEventListener('click', affect);

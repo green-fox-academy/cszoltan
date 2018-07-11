@@ -1,0 +1,28 @@
+table, th, td {
+  border: 1px solid black;
+}
+th:last-child {
+  border: none;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+td:last-child {
+  border: none;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+th, td {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+label {
+  display:grid;
+  grid-template-columns: 40% 60%;
+  width: 350px;
+}
+input {
+  grid-column-start: 2;
+}
+#submit {
+  grid-column: 1 / span 2;
+}

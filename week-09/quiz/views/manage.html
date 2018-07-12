@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Manage Questions</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="delete">
+      <div>
+        <h1>Manage Questions</h1>
+      </div>
+    </div>
+  </div>
+  <div class="add">
+    <div>
+      <h1>Create a new Question</h1>
+    </div>
+    <form>
+      <input type="text" name="question" id="question" placeholder="Type your question here" require>
+      <h2>Answers</h2>
+      <label>
+        <span>#1</span>
+        <input type="text" name="answer-1" id="answer-1" placeholder="Type your answer here" require>
+        <input type="radio" name="isCorrect" id="isCorrect-1">
+      </label>
+      <label>
+        <span>#2</span>
+        <input type="text" name="answer-2" id="answer-2" placeholder="Type your answer here" require>
+        <input type="radio" name="isCorrect" id="isCorrect-2">
+      </label>
+      <label>
+        <span>#3</span>
+        <input type="text" name="answer-3" id="answer-3" placeholder="Type your answer here" require>
+        <input type="radio" name="isCorrect" id="isCorrect-3">
+      </label>
+      <label>
+        <span>#4</span>
+        <input type="text" name="answer-4" id="answer-4" placeholder="Type your answer here" require>
+        <input type="radio" name="isCorrect" id="isCorrect-4">
+      </label>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  <script src="../static/manage.js"></script>
+</body>
+
+</html>
